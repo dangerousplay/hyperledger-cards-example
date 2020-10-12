@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package org.dangerousplay.hyperledger;
+
+option java_multiple_files = true;
+
+
+enum PlasticMode {
+    CREDIT = 0;
+    DEBIT = 1;
+    MULTIPLE = 2;
+}
+
+enum PosEntryModeEnum {
+    MAGNETIC_STRIPE = 0;
+    CONTACTLESS = 1;
+    ECOMMERCE = 2;
+    CHIP = 3;
+    UNKNOWN = 4;
+}
+
+enum BlockReason {
+    STOLEN_LOST = 0;
+    FRAUD = 1;
+    TEMPORARY = 2;
+    PREVENTIVE = 3;
+    DESTROYED = 4;
+    REPLACEMENT = 5;
+    OTHER = 6;
+}
+
+
+message Address {
+    string street = 1;
+    string number = 2;
+    string complement = 3;
+    string neighborhood = 4;
+    string postalCode = 5;
+    string city = 6;
+    string state = 7;
+}
+
+
+message CreatePlasticRequest {
+    string accountNumber = 1;
+    string embossingName = 2;
+    int64 productId = 3;
+    string productName = 4;
+    PlasticMode plasticMode = 5;
+    string lastDigitsPan = 6;
+    string recipientName = 7;
+    Address deliveryAddress = 8;
+    bool virtual = 9;
+    string orderId = 10;
+}
+
+message BlockPlasticRequest {
+    BlockReason blockReason = 1;
+    string protocol = 2;
+    string plasticId = 3;
+}
+
+
+message GetPlasticRequest {
+    string plasticId = 1;
+}
+
+
+message CardTransactionRequest {
+    string authTransactionType = 1;
+    int64 accountId = 3;
+    string merchantName = 6;
+    string merchantCity = 7;
+    string issuerAmount = 8;
+    string acquirerAmount = 9;
+    string iofAmount = 10;
+    string transactionProcessingType = 11;
+    bool national = 12;
+    string lastDigits = 13;
+    string issuerCurrencyCode = 17;
+    string acquirerCurrencyCode = 18;
+    PosEntryModeEnum posEntryModeEnum = 19;
+}

@@ -1,0 +1,16 @@
+ext['arrow_version']      = '0.10.5'
+ext['kotlintest_version'] = '3.1.11'
+
+dependencies {
+    implementation group: 'io.arrow-kt', name: 'arrow-syntax', version: arrow_version
+    implementation group: 'io.arrow-kt', name: 'arrow-recursion', version: arrow_version
+
+
+    // Use Arrow to add FP functionality to Kotlin
+    implementation group: 'io.arrow-kt', name: 'arrow-syntax', version: arrow_version
+    implementation group: 'io.arrow-kt', name: 'arrow-fx-reactor', version: arrow_version
+    implementation group: 'io.arrow-kt', name: 'arrow-optics', version: arrow_version
+    implementation group: 'io.arrow-kt', name: 'arrow-mtl-data', version: arrow_version
+
+    testImplementation group: "io.kotlintest", name: 'kotlintest-runner-junit5', version: kotlintest_version
+}
