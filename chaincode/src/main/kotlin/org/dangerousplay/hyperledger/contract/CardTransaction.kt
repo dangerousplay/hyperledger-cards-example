@@ -37,6 +37,11 @@ class CardTransaction : ContractInterface {
     private val TRANSACTION_PREFIX = "TRANSACTION"
 
 
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    fun init(ctx: Context) {
+
+    }
+
     @Transaction(intent = Transaction.TYPE.SUBMIT)
     fun issueTransaction(ctx: Context) {
         val body = Base64.getDecoder().decode(ctx.stub.parameters[0])

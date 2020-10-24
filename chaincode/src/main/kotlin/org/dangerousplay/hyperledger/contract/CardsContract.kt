@@ -43,6 +43,11 @@ class CardsContract: ContractInterface {
     private val PLASTIC_PREFIX = "PLASTIC"
 
 
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    fun init(ctx: Context) {
+
+    }
+
     @Transaction(intent = Transaction.TYPE.SUBMIT)
     fun createPlastic(ctx: Context) {
         val body = Base64.getDecoder().decode(ctx.stub.parameters[0])
